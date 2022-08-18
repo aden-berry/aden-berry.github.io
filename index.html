@@ -5,8 +5,8 @@
 
          <style>
             body {
-                background: rgb(125, 198, 205);
-                color: rgb(45, 45, 45);
+                background: rgb(0, 0, 0);
+                color: rgb(200, 24, 1);
                 padding: 10px;
                 font-family: arial;
             }
@@ -17,15 +17,15 @@
          
             /* navigation menu */
             nav {
-                background: rgb(239, 80, 41);
-               margin: 0 auto;
+                background: rgba(222, 103, 13, 0.538);
+               margin: 20px;
                 display: flex;
                 padding: 10px;
             }
             h1 {
                 display: flex;
                 align-items: center;
-                color: white;
+                color: rgb(204, 3, 3);
                 flex: 1;
                 margin: 0;
             }
@@ -38,12 +38,12 @@
             }
             a {
                 text-decoration: none;
-                color: #fff;
+                color: rgb(187, 25, 25);
             }
          
             /* main container area beneath menu */
             main {
-                background: rgb(245, 238, 219);
+                background: rgb(222, 103, 13, 0.538);
                 display: flex;
             }
             .sidebar {
@@ -64,19 +64,27 @@
             h2, h3 {
                 margin: 0px;
             }
+            #all-content {
+                max-width: 800px;
+                margin: auto;
+            }
+            #hahnville-logo {
+                border-radius: 25% 10%;
+                width: 500px;
+            }
          </style>
     </head>
     
     <body>
             <!-- Visible HTML elements GO HERE  -->
-            <div> 
+        <div id="all-contents"> 
                 <nav>
                     <h1> About me </h1>
-                    <ul>
-                        <li>
+                    <ul id="nav-ul">
+                        <li class="nav-li">
                           <a href="index.html"> Home </a>
                         </li>
-                        <li>
+                        <li class="nav-li">
                           <a href="portfolio.html"> Portfolio </a>
                         </li>
                     </ul>
@@ -84,41 +92,29 @@
 
                 <main>
                     <!-- Sidebar section -->
-                    <div>
-                        <img scr="">
+                    <div class="sidebar">
+                        <img id="hahnville-logo" src="https://www.heraldguide.com/wp-content/uploads/2018/10/Hahnville-High-Logo-678x381.jpg">
                     </div>
-                
-                    <!-- Content section -->
-                    <body>
-                        <!-- All content goes here -->
+                        <!-- Content section -->
+                        <div class="content">
+                            <h2> Aden Berry </h2>
 
-                            <!-- All content goes here -->
-                            <div>
-                                ...
-                            </div>
-
-                     </body>
-                    <div>
-                        <h2> Aden Berry </h2>
-
-                        <p> 
-                            Freshemen student at Hahnville High School
-                        </p>
+                            <p> 
+                                Freshemen student at Hahnville High School
+                            </p>
+                        </div>
                         <!-- Interests section -->
-                        <div>
+                        <div id="intrests">
                             <h3> Intrests </h3>
                                 <ul>
                                     <li> games </li>
                                     <li> coding </li>
                                     <li> learning easier ways to do things </li>
-                                    <li> dogs and even cats </li>
+                                    <li> love dogs </li>
                                     <li> playing sports for fun </li>
                                 </ul>
                         </div>
-                    </div>
                 </main>
-                
-            </div>
-         </body>
+        </div>
     </body>
 </html>
