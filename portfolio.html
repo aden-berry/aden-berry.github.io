@@ -1,0 +1,129 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title> Adens Website </title>
+        <style>
+            body {
+                background: rgb(0, 0, 0);
+                color: rgb(200, 24, 1);
+                padding: 10px;
+                font-family: arial;
+            }
+            #all-contents {
+              max-width: 800px;
+                margin: auto;
+            }
+         
+            /* navigation menu */
+            nav {
+                background: rgba(240, 240, 240, 0.538);
+               margin: 20px;
+                display: flex;
+                padding: 10px;
+                border-radius: 30px;
+            }
+            h1 {
+                display: flex;
+                align-items: center;
+                color: rgb(204, 3, 3);
+                flex: 1;
+                margin: 0;
+            }
+            #nav-ul {
+                list-style-image: none;
+            }
+            .nav-li {
+                display: inline-block;
+                padding: 0 10px;
+            }
+            a {
+                text-decoration: none;
+                color: rgb(187, 25, 25);
+            }
+         
+            /* main container area beneath menu */
+            main {
+                background: rgba(240, 240, 240, 0.538);
+                display: flex;
+                border-radius: 30px;
+            }
+            .sidebar {
+                margin-right: 25px;
+                padding: 10px;
+            }
+            .sidebar-img {
+                width: 200px;
+            }
+            .content {
+                flex: 1;
+                padding: 15px;
+            }
+            #interests {
+                border: 4px silver ridge;
+                padding: 8px;
+            }
+            h2, h3 {
+                margin: 0px;
+            }
+            #all-content {
+                max-width: 800px;
+                margin: auto;
+            }
+            #hahnville-logo {
+                border-radius: 25% 10%;
+                width: 200px;
+            }
+                     /* portfolio styles */
+         .content h1 {
+             color: rgb(253, 4, 4);
+         }
+
+         #portfolio {
+             list-style-type: none;
+             padding-left: 0;
+         }
+
+         #portfolio li {
+             background: rgb(144, 124, 124);
+             padding: 10px;
+             border-radius: 10px;
+             margin-bottom: 10px;
+         }
+
+         #portfolio li:hover {
+             background: rgb(222, 123, 123);
+         }
+
+         #portfolio a {
+             text-decoration: none;
+             color: #ce2020;
+         }
+         </style>
+    </head>
+
+    <body>
+      <div id="all-contents">
+        <nav>
+            <h1> Adens Website </h1>
+            <ul id="nav-ul">
+                <li class="nav-li">
+                  <a href="index.html"> Home </a>
+                </li>
+                <li class="nav-li">
+                  <a href="portfolio.html"> Portfolio </a>
+                </li>
+            </ul>
+        </nav>
+        <main>
+            <div class="content">
+                <h1>Portfolio</h1>
+                <ul id="portfolio">
+                    <li><a href="projects/platformer/">Platformer : A cannon - dodging, collectible - grabbing adventure game for Halleb0t</a></li>
+                    <li><a href="projects/bouncing-box/">Bouncing Box : A project that gives you a taste of game development on the web </a></li>
+                    <li><a href="projects/circularity/">Circularity : A motion poem using random number generation and velocity applied to circle shapes...</a></li>
+                </ul>
+            </div>
+        </main>
+      </div>
+    </body>
+</html>
