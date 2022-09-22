@@ -8,22 +8,29 @@
 		.box {
 			width: 70px;
 			height: 70px;
+			background-image: url("images/bird-image.png");
 			background-color: teal;
+			background-size: cover;
 			font-size: 300%;
 			text-align: center;
 			display: block;
 			position: absolute;
 			top: 100px;
-			left: 0px;  /* <--- Change me! */
+			left: 700px;  /* <--- Change me! */
 		}
 		.board{
 			height: 100vh;
+			background-image: url("https://thehill.com/wp-content/uploads/sites/2/2019/11/ca_sugarpine_102119_istock_0.jpg?w=1440&h=880&crop=1");
+			background-color: #cccccc;
 		}
+
+
+
 	</style>
 	<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
 
 </head>
-<body class="board">
+<body class="board"> 
 	<!-- HTML for the box -->
 	<div class="box">?</div>
 
@@ -39,7 +46,6 @@
 			var box = jQuery('.box');	// reference to the HTML .box element
 			var board = jQuery('.board');	// reference to the HTML .board element
 			var boardWidth = board.width();	// the maximum X-Coordinate of the screen
-
 			// Every 50 milliseconds, call the update Function (see below)
 			setInterval(update, 50);
 			
@@ -48,8 +54,8 @@
 
 			// moves the Box to a new position on the screen along the X-Axis
 			function moveBoxTo(newPositionX) {
-				box.css("left", newPositionX);
-			}
+      			box.css('left', newPositionX);
+ 			 }
 
 			// changes the text displayed on the Box
 			function changeBoxText(newText) {
@@ -61,18 +67,29 @@
 			//////////////////////////////////////////////////////////////////
 			
 			// TODO 2 - Variable declarations 
-			
-
-			
+			var positionX = 0;
+			var points = 1;
+			var speed = 10;
+			var positionY = 0;
+			var speedY = 10;
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
 			it should move the Box to a new location. If the box drifts off the screen
 			turn it around! 
 			*/
 			function update() {
-				
+				positionX = positionX + speed;
+				moveBoxTo(positionX);
+				if (positionX > boardWidth) {
+					speed = -speed;
+					speed *= -1;
+					speed = speed * -1;
 
-			};
+				}
+				if (positionX < 0) {
+					speed = speed + 3;
+				}
+			}
 
 			/* 
 			This Function will be called each time the box is clicked. Each time it is called,
@@ -80,11 +97,12 @@
 			the left side of the screen.
 			*/
 			function handleBoxClick() {
-				
-
-
+				positionX = 0;
+				points = points + 1;
+				changeBoxText(points);
+				speed = speed + 3;
 			};
-		})();
+		}
 	</script>
 </body>
 </html>
