@@ -1,17 +1,19 @@
 body {
-    background-color: rgb(212, 109, 109);
+    background-image: linear-gradient(red, rgb(113, 10, 10));
 }
 #main-contents {
     border: thick double #c9a0a0;
     text-emphasis-color: rgb(181, 0, 9);
+    font-family: 'Times New Roman', Times, serif;
+    color:#000000b9
 }
 a {
-    color:rgb(255, 0, 13);
+    color:rgb(0, 0, 0);
     text-decoration: none;
     font-size: 200%;
 }
 a:visited {
-    color:rgb(232, 38, 38);
+    color:rgba(0, 0, 0, 0.651);
 }
 a:hover {
     color: rgb(255, 177, 81);
@@ -19,19 +21,20 @@ a:hover {
 a:active {
     color:rgb(40, 214, 245);
 }
-p {
-    font-family: 'Times New Roman', Times, serif;
-    color:#000000b9
-}
 .center {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    width: 25%;
+    height: 15%;
 }
 .links {
     border-radius: 25px;
-    border: 2px solid #6e7015;
+    border: 2px solid #f64545;
     padding: 20px; 
     width: 1465px;
     height: 50px;  
+}
+#title {
+    text-align: center;
 }
