@@ -1,11 +1,12 @@
 body {
     background-image: linear-gradient(red, rgb(113, 10, 10));
+    font-family: sans-serif;
+    color:#000000b9
 }
 #main-contents {
     border: thick double #c9a0a0;
     text-emphasis-color: rgb(181, 0, 9);
-    font-family: 'Times New Roman', Times, serif;
-    color:#000000b9
+
 }
 a {
     color:rgb(0, 0, 0);
