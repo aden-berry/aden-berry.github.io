@@ -6,6 +6,10 @@ body {
 #main-contents {
     border: thick double #c9a0a0;
     text-emphasis-color: rgb(181, 0, 9);
+    background-color: #D11920;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 20px;
 
 }
 a {
@@ -32,9 +36,12 @@ a:active {
 .links {
     border-radius: 25px;
     border: 2px solid #f64545;
-    padding: 20px; 
-    width: 1465px;
-    height: 50px;  
+    text-emphasis-color: rgb(181, 0, 9);
+    text-align: left;
+    background-color: #D11920;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 20px;
 }
 #title {
     text-align: center;
