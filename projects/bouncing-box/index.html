@@ -79,8 +79,6 @@
 				positionX = positionX + speed;
 				moveBoxTo(positionX);
 				if (positionX => boardWidth) {
-					speed = -speed;
-					speed *= -1;
 					speed = speed * -1;
 				}
 				if (positionX <= 0) {
@@ -99,7 +97,7 @@
 				changeBoxText(points);
 				speed = speed + 3;
 			}
-		}
+		})
 	</script>
 </body>
 </html>
