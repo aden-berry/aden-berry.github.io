@@ -68,25 +68,27 @@ var init = function (window) {
         */
         game.checkCirclePosition = function(circle) {
 
-            // if the circle has gone past the RIGHT side of the screen then place it on the LEFT
-            var sidesEdge = circle.x + circle.radius;
-            var topNBottom = circle.y + circle.radius;
-            if ( circle.x > canvas.width ) {
-                circle.x = 0;
-            }
+            var rightEdge = circle.x + circle.radius;
+            var leftEdge = circle.x - circle.radius;
+            var topEdge = circle.y + circle.radius;
+            var bottomEdge = circle.y - circle.radius;
             
             // TODO 6 : YOUR CODE STARTS HERE //////////////////////
             // if the circles goes past the left side of the screen it will be placed on the RIGHT
-            if (circle.x < 0) {
-                circle.x = canvas.width;
+            // if the circle has gone past the RIGHT side of the screen then place it on the LEFT
+            if (rightEdge < 0) {
+                circle.x += canvas.width + circle.radius;
+            }
+            if (leftEdge > canvas.width) {
+                circle.x = -circle.radius;
             }
             // if circles go up out of screen they will appear on the BOTTOM
-            if (circle.y < 0) {
-                circle.y = canvas.height;
+            if (topEdge < 0) {
+                circle.y += canvas.height + circle.radius
             }
             // if circles go down out of screen they will reappear at the top
-            if (circle.y > canvas.height) {
-                circle.y = 0
+            if (bottomEdge > canvas.height) {
+                circle.y = -circle.radius;
             }
 
             // YOUR TODO 6 CODE ENDS HERE //////////////////////////
