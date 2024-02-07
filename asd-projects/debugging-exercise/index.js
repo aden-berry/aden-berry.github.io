@@ -140,8 +140,6 @@ function bounceCircle(circle){
 
 // this redraws the circle's position on the screen
 function updateCircleOnScreen(circle){
-    maxCircles = 10;
-
     // these lines redraw the circle's position
     $(circle.id).css('left', circle.x);
     $(circle.id).css('top', circle.y);
