@@ -42,8 +42,8 @@ function runProgram(){
   */
   function newFrame() {
     repositionGameItem();
-    redrawGameItem();
     wallCollision();
+    redrawWalker();
   }
   
   /* 
@@ -87,8 +87,22 @@ function runProgram(){
   function repositionGameItem() {
     walker.positionX += walker.speedX;
     walker.positionY += walker.speedY;
+    console.log(walker.positionX);
+    console.log(walker.positionY);
   }
-function redrawGameItem (){
+  function wallCollision(){
+    if (walker.positionX < 0){
+      walker.positionX = 0
+    }else if (walker.positionX >= BOARDWIDTH){
+     walker.positionX = BOARDWIDTH 
+    }
+    if (walker.positionY < 0){
+      walker.positionY = 0
+    } else if (walker.positionY >= BOARDHEIGHT){
+      walker.positionY = BOARDHEIGHT
+    }
+  }
+function redrawWalker (){
   $("#walker").css("left", walker.positionX);
   $("#walker").css("top", walker.positionY); 
 }
@@ -99,17 +113,5 @@ function redrawGameItem (){
 
     // turn off event handlers
     $(document).off();
-  }
-  function wallCollision (){
-    if (walker.positionX <= 0){
-      walker.speedX = 0
-    }else if (walker.positionX >= BOARDWIDTH){
-     walker.speedX = 0 
-    }
-    if (walker.positionY <= 0){
-      walker.speedY = 0
-    } else if (walker.positionY >= BOARDHEIGHT){
-      walker.speedY
-    }
   }
 }
