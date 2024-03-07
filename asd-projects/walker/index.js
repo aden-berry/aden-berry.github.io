@@ -92,14 +92,14 @@ function runProgram(){
   }
   function wallCollision(){
     if (walker.positionX < 0){
-      walker.positionX = 0
-    }else if (walker.positionX >= BOARDWIDTH){
-     walker.positionX = BOARDWIDTH 
+      walker.positionX = walker.positionX + 5;
+    }else if (walker.positionX >= 394){
+     walker.positionX = walker.positionX -5;
     }
     if (walker.positionY < 0){
-      walker.positionY = 0
-    } else if (walker.positionY >= BOARDHEIGHT){
-      walker.positionY = BOARDHEIGHT
+      walker.positionY = walker.positionY + 5;
+    } else if (walker.positionY >= 394){
+      walker.positionY = walker.positionY - 5;
     }
   }
 function redrawWalker (){
