@@ -15,12 +15,14 @@ function runProgram(){
   var FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
   
   // Game Item Objects
+  // these are the walkers controls
   var KEY = {
     left: 37,
     up: 38,
     right: 39,
     down: 40,
   }
+  //this is the game item
   var walker = {
     positionX: 0,
     positionY: 0,
@@ -90,6 +92,7 @@ function runProgram(){
     console.log(walker.positionX);
     console.log(walker.positionY);
   }
+  //tells program when the walker hits a wall so it stops 
   function wallCollision(){
     if (walker.positionX < 0){
       walker.positionX = walker.positionX + 5;
@@ -102,11 +105,12 @@ function runProgram(){
       walker.positionY = walker.positionY - 5;
     }
   }
+  //remakes the walkers position
 function redrawWalker (){
   $("#walker").css("left", walker.positionX);
   $("#walker").css("top", walker.positionY); 
 }
-  
+  // ends game
   function endGame() {
     // stop the interval timer
     clearInterval(interval);
