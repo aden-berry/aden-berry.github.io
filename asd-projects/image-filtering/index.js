@@ -69,13 +69,13 @@ function keepInBounds(num1){
 }
 
 // TODO 3: Create reddify function
-function reddify(reds){
-  reds[0] = 200;
+function reddify(redder){
+  redder[0] = 200;
 }
 
 // TODO 6: Create more filter functions
-function decreaseBlue (Blue){
-  Blue[0] = keepInBounds(BLUE - 50);
+function decreaseBlue (blueyDaDog){
+  blueyDaDog[0] = keepInBounds(BLUE - 50);
 }
 function increaseGreenByBlue (greeny){
   greeny[0] = keepInBounds(BLUE + GREEN);
