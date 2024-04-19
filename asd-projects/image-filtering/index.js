@@ -65,13 +65,14 @@ function applyFilterNoBackground(filterFunction){
 
 // TODO 5: Create the keepInBounds function
 function keepInBounds(num1){
-  return num1 < 0 || num1 > 255 ? "0" : num1;
+  var temp = num1 < 0 ? 0 : num1;
+  return temp > 255 ? 255 : num1;
 }
 
 // TODO 3: Create reddify function
 //  makes red filter
 function reddify(redder){
-  redder[0] = RED;
+  redder[RED] = RED;
 }
 
 // TODO 6: Create more filter functions
@@ -80,7 +81,7 @@ function decreaseBlue (blueyDaDog){
   blueyDaDog[BLUE] = keepInBounds(BLUE - 50);
 }
 //increases green by using blue 
-function increaseGreenByBlue (greeny){
-  greeny[GREEN] = keepInBounds(BLUE + GREEN);
+function increaseGreenByBlue (thygry){
+  thygry[GREEN] = keepInBounds(BLUE + GREEN);
 }
 // CHALLENGE code goes below here
