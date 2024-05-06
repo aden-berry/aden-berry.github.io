@@ -12,8 +12,21 @@ function runProgram(){
   const FRAMES_PER_SECOND_INTERVAL = 1000 / FRAME_RATE;
   
   // Game Item Objects
+var rightPaddle = {
+  
+};
+var leftPaddle = {
 
+};
+var ball = {
 
+};
+var scoreP1 = {
+  id: $('#scoreP1')
+}
+var scoreP2 = {
+  id: $('#scoreP2')
+}
   // one-time setup
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('eventType', handleEvent);                           // change 'eventType' to the type of event you want to handle
