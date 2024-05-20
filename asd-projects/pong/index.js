@@ -62,18 +62,20 @@ function runProgram() {
   by calling this function and executing the code inside.
   */
   function newFrame() {
-    scoreKeeper(P1Score);
-    scoreKeeper(P2Score);
     repositionThangs(leftPaddle);
     repositionThangs(rightPaddle);
     repositionThangs(ball);
+
     ballBoundary();
+
     boarderLimit(leftPaddle);
     boarderLimit(rightPaddle);
+
     redrawThangs(leftPaddle);
     redrawThangs(rightPaddle);
     redrawThangs(ball);
     
+    scoreKeeper("#scoreP1", "#scoreP2", P1Score, P2Score);
   }
 
   /* 
@@ -117,15 +119,10 @@ function runProgram() {
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
-  //supposed to keep score //
-  function scoreKeeper (side){
-    if (side === "left") {
-      P2Score++;
-    }
-    if (side === "right"){
-      P1Score++;
-    }
-
+  //supposed to refrence html divs n stuff //
+  function scoreKeeper (idP1, idP2, scoreP1, scoreP2){
+    $(idP1).text(scoreP1);
+    $(idP2).text(scoreP2);
   }
   //the balls limit and when it bounces //
   function ballBoundary (){
@@ -137,8 +134,7 @@ function runProgram() {
     }
     if (ball.positionX  <= 0){
       ball.speedX *= -1;
-      scoreKeeper("left");
-      console.log(P2Score);
+      scoreP2++;
     }
     if (ball.positionY + ball.height >= boardHeight + 20){
       ball.speedY *= -1;
