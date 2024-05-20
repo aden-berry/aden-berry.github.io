@@ -41,7 +41,7 @@ html{
 #rightPaddle {
   background-color: rgb(0, 255, 145);
   position: absolute; 
-  right: 50px;
+  left: 700px;
   top: 200px;
   width: 25px;
   height: 150px;
@@ -65,7 +65,7 @@ html{
   left: 743px;
   top: -55px;
 }
-#gameItem {
+#ball {
   background-color: rgb(14, 169, 133);
   width: 50px;
   height: 50px;;
