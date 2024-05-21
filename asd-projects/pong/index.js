@@ -19,6 +19,7 @@ function runProgram() {
     speedX: 0,
     speedY: 0,
     height: parseFloat($('#rightPaddle').height()),
+    width: parseFloat($('#rightPaddle').width()),
   };
   var leftPaddle = {
     id: '#leftPaddle',
@@ -27,12 +28,13 @@ function runProgram() {
     speedX: 0,
     speedY: 0,
     height: parseFloat($('#leftPaddle').height()),
+    width: parseFloat($('#leftPaddle').width()),
   };
   var ball = {
     id: '#ball',
     positionX: 0,
     positionY: 0,
-    speedX: 4,
+    speedX: 5,
     speedY: 4,
     width: parseFloat($('#ball').width()), 
     height: parseFloat($('#ball').height()),
@@ -66,14 +68,16 @@ function runProgram() {
     repositionThangs(rightPaddle);
     repositionThangs(ball);
 
-    ballBoundary();
+    redrawThangs(leftPaddle);
+    redrawThangs(rightPaddle);
+    redrawThangs(ball);
 
     boarderLimit(leftPaddle);
     boarderLimit(rightPaddle);
 
-    redrawThangs(leftPaddle);
-    redrawThangs(rightPaddle);
-    redrawThangs(ball);
+    ballBoundary();
+    BPCollision();
+
     
     scoreKeeper("#scoreP1", "#scoreP2", P1Score, P2Score);
   }
@@ -100,17 +104,17 @@ function runProgram() {
   }
   //handles the handler//
   function stopHandlePaddles(event) {
-    if (event.which !== KEYS.W) {
+    if (event.which === KEYS.W) {
       leftPaddle.speedY = 0;
     }
-    if (event.which !== KEYS.S) {
+    if (event.which === KEYS.S) {
       leftPaddle.speedY = 0;
     }
-    if (event.which !== KEYS.UPARROW) {
+    if (event.which === KEYS.UPARROW) {
       rightPaddle.speedY = 0;
       console.log("up")
     }
-    if (event.which !== KEYS.DOWNARROW) {
+    if (event.which === KEYS.DOWNARROW) {
       rightPaddle.speedY = 0;
       console.log("down")
     }
@@ -119,12 +123,23 @@ function runProgram() {
   ////////////////////////////////////////////////////////////////////////////////
   ////////////////////////// HELPER FUNCTIONS ////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
-  //supposed to refrence html divs n stuff //
-  function scoreKeeper (idP1, idP2, scoreP1, scoreP2){
-    $(idP1).text(scoreP1);
-    $(idP2).text(scoreP2);
+  function BPCollision (){
+    if (doCollide(rightPaddle, ball)){
+      ball.speedX *= -1;
+      ball.speedY += 1;
+    }
+    if (doCollide(leftPaddle, ball)){
+      ball.speedX *= -1;
+      ball.speedX += 1;
+    }
+    
   }
-  //the balls limit and when it bounces //
+  //serves as a refrence so we can access HTML elements such as the score //
+  function scoreKeeper (id1, id2, score1, score2){
+    $(id1).text(score1);
+    $(id2).text(score2);
+  }
+  //the ball is limited within the border and reflects speed //
   function ballBoundary (){
     // if (ball.positionX && ball.positionY >= ){
       // 
@@ -133,25 +148,42 @@ function runProgram() {
       ball.speedY *= -1;
     }
     if (ball.positionX  <= 0){
-      ball.speedX *= -1;
-      scoreP2++;
+      P2Score++;
+      ball.speedX = 4;
+      ball.speedY = 4;
+      ball.positionX = 500;
+      
     }
     if (ball.positionY + ball.height >= boardHeight + 20){
       ball.speedY *= -1;
     }
     if (ball.positionX + ball.width >= boardWidth + 20){
-      ball.speedX *= -1;
+      P1Score++;
+      ball.speedX = -4;
+      ball.speedY = -4;
+      ball.positionX = 350;     
 
     }
     
   }
+  //Check for collision
+
+function doCollide(obj1, obj2){
+
+  if(obj1.positionX + obj1.width >= obj2.positionX
+  && obj1.positionY <= obj2.positionY + obj2.height
+  && obj1.positionY + obj1.height >= obj2.positionY){
+    return true;
+  }
+
+}
   /// this is just for the paddles limit//
-  function boarderLimit(obj){
-    if (obj.positionY  <= 0){
-      obj.positionY = 0;
+  function boarderLimit(paddle){
+    if (paddle.positionY  <= 0){
+      paddle.positionY = 0;
     }
-    if (obj.positionY + obj.height >= boardHeight + 20){
-      obj.positionY = boardHeight - obj.height + 20;
+    if (paddle.positionY + paddle.height >= boardHeight + 20){
+      paddle.positionY = boardHeight - paddle.height + 20;
     }
   }
   // key reason the game items can move since it remakes them in said spot//
