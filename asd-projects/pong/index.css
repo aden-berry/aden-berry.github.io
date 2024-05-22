@@ -38,7 +38,7 @@ html{
 #rightPaddle {
   background-color: rgb(0, 255, 145);
   position: absolute; 
-  left: 700px;
+  left: 900px;
   top: 200px;
   width: 25px;
   height: 150px;
@@ -59,7 +59,7 @@ html{
   font-size: 50px;
   width: 50px;
   position: relative;
-  left: 743px;
+  left: 950px;
   top: -55px;
 }
 #ball {

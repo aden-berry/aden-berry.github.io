@@ -14,7 +14,7 @@ function runProgram() {
   // Game Item Objects
   var rightPaddle = {
     id: '#rightPaddle',
-    positionX: 700,
+    positionX: 900,
     positionY: 0,
     speedX: 0,
     speedY: 0,
@@ -55,6 +55,7 @@ function runProgram() {
   let interval = setInterval(newFrame, FRAMES_PER_SECOND_INTERVAL);   // execute newFrame every 0.0166 seconds (60 Frames per second)
   $(document).on('keydown', handlePaddles);                           // change 'eventType' to the type of event you want to handle
   $(document).on('keyup', stopHandlePaddles);
+  startBall();
   ////////////////////////////////////////////////////////////////////////////////
   ///////////////////////// CORE LOGIC ///////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////
@@ -75,8 +76,9 @@ function runProgram() {
     boarderLimit(leftPaddle);
     boarderLimit(rightPaddle);
 
-    ballBoundary();
     BPCollision();
+    ballBoundary();
+
 
     
     scoreKeeper("#scoreP1", "#scoreP2", P1Score, P2Score);
@@ -87,19 +89,21 @@ function runProgram() {
   */
   //makes paddles move//
   function handlePaddles(event) {
+
+
     if (event.which === KEYS.W) {
-      leftPaddle.speedY = -5;
+      leftPaddle.speedY = -10;
       console.log("w")
     }
     if (event.which === KEYS.S) {
-      leftPaddle.speedY = 5;
+      leftPaddle.speedY = 10;
       console.log("s")
     }
     if (event.which === KEYS.UPARROW) {
-      rightPaddle.speedY = -5
+      rightPaddle.speedY = -10
     }
     if (event.which === KEYS.DOWNARROW) {
-      rightPaddle.speedY = 5
+      rightPaddle.speedY = 10
     }
   }
   //handles the handler//
@@ -130,7 +134,8 @@ function runProgram() {
     }
     if (doCollide(leftPaddle, ball)){
       ball.speedX *= -1;
-      ball.speedX += 1;
+      ball.speedY += 1;
+      
     }
     
   }
@@ -149,32 +154,43 @@ function runProgram() {
     }
     if (ball.positionX  <= 0){
       P2Score++;
-      ball.speedX = 4;
-      ball.speedY = 4;
-      ball.positionX = 500;
-      
+      startBall();
+      if (P2Score === 10){
+        endGame();
+      }
     }
-    if (ball.positionY + ball.height >= boardHeight + 20){
+    if (ball.positionY + ball.height >= boardHeight){
       ball.speedY *= -1;
     }
-    if (ball.positionX + ball.width >= boardWidth + 20){
+    if (ball.positionX + ball.width >= boardWidth){
       P1Score++;
-      ball.speedX = -4;
-      ball.speedY = -4;
-      ball.positionX = 350;     
-
+      startBall();  
+      if (P1Score === 10){
+        endGame();
+      }
     }
     
+  }
+
+  function startBall(){
+    ball.positionX = 500;
+    ball.positionY = 400;
+    ball.speedX = (Math.random() * 8) + 2;
+    ball.speedY = (Math.random() * 8) + 2;
   }
   //Check for collision
 
 function doCollide(obj1, obj2){
-
-  if(obj1.positionX + obj1.width >= obj2.positionX
-  && obj1.positionY <= obj2.positionY + obj2.height
-  && obj1.positionY + obj1.height >= obj2.positionY){
-    return true;
-  }
+obj1.rightX = obj1.positionX + obj1.width;
+obj2.rightX = obj2.positionX + obj2.width;
+obj1.bottomY = obj1.positionY + obj1.height;
+obj2.bottomY = obj2.positionY + obj2.height;
+if (obj1.positionX <= obj2.rightX && 
+  obj1.rightX >= obj2.positionX && 
+  obj1.positionY <= obj2.bottomY && 
+  obj1.bottomY >= obj2.positionY){
+return true;
+}
 
 }
   /// this is just for the paddles limit//
@@ -182,8 +198,8 @@ function doCollide(obj1, obj2){
     if (paddle.positionY  <= 0){
       paddle.positionY = 0;
     }
-    if (paddle.positionY + paddle.height >= boardHeight + 20){
-      paddle.positionY = boardHeight - paddle.height + 20;
+    if (paddle.positionY + paddle.height >= boardHeight){
+      paddle.positionY = boardHeight - paddle.height;
     }
   }
   // key reason the game items can move since it remakes them in said spot//
